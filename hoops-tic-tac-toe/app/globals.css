@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@theme {
+  /* Court palette */
+  --color-navy: #14213d;
+  --color-ink: #0b1426;
+  --color-panel: #142340;
+  --color-cream: #fff7e8;
+  --color-cream-hover: #ffe8c2;
+  --color-gold: #ffd166;
+  --color-hoop: #1d3557;
+  --color-buzzer: #c1121f;
+  --color-wood: #c4803f;
+
+  /* Scoreboard / headline font (system fonts only, no downloads) */
+  --font-display: Impact, Haettenschweiler, "Arial Narrow Bold", "Arial Black",
+    sans-serif;
+
+  /* Animations */
+  --animate-pop: pop 220ms ease-out;
+  --animate-win-pulse: win-pulse 800ms ease-in-out infinite alternate;
+  --animate-banner-pop: banner-pop 350ms ease-out;
+  --animate-attention: attention 1.1s ease-in-out infinite;
+
+  @keyframes pop {
+    from {
+      transform: scale(0.4);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes win-pulse {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes banner-pop {
+    from {
+      transform: scale(0.96);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes attention {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.03);
+    }
+  }
+}
+
+/* Hardwood floor: planks plus a light wood gradient */
+@utility bg-hardwood {
+  background: repeating-linear-gradient(
+      90deg,
+      rgba(60, 30, 10, 0.12) 0 2px,
+      transparent 2px 72px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.06) 0 1px,
+      transparent 1px 10px
+    ),
+    linear-gradient(180deg, #d9a066 0%, #c4803f 100%);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-wood);
+    color: var(--color-navy);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Respect "reduce motion" system settings */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
